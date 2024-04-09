@@ -30,7 +30,21 @@ export function displaySideBar() {
         deleteProjectBtn.addEventListener('click', () => {
             myProjects.splice(index, 1)
             p.remove(index);
-        })
+        });
+
+        editProjectBtn.addEventListener('click', () => {
+            p.innerHTML = '<input id="editProjectInput"></input> <button type="submit" id="saveProjectBtn">save</button>';
+            const editProjectInput = document.querySelector('#editProjectInput');
+            const saveProjectBtn = document.querySelector('#saveProjectBtn');
+            
+            saveProjectBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                myProjects[index].title = editProjectInput.value;
+                displaySideBar();
+            });
+        });
+
+        
     });
 };
     
