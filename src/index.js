@@ -10,5 +10,24 @@ myProjects.push(firstProject);
 myProjects.push(secondProject);
 myProjects.push(thirdProject);
 
+const addNewProjectsBtn = document.querySelector('#addNewProjectsBtn');
+const newProject = document.querySelector('#newProject');
+
 displaySideBar();
+
+console.log(newProject.value)
+
+addNewProjectsBtn.addEventListener('click', (e) => {
+    e.preventDefault()
+    const project = new createNewProjects(newProject.value);
+    myProjects.push(project);
+    displaySideBar();
+})
+
+
+
+
+
+
+
 

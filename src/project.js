@@ -27,10 +27,5 @@ export function displaySideBar() {
         deleteProjectBtn.textContent = "x";
         p.appendChild(deleteProjectBtn);
     });
-
-    const addNewProjectsBtn = document.createElement('button');
-    addNewProjectsBtn.setAttribute('id', 'addNewProjectsBtn');
-    addNewProjectsBtn.textContent = '+';
-    projectsList.appendChild(addNewProjectsBtn);
-
 };
+    
