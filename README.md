@@ -2,7 +2,7 @@
 
 pseudocode
 
-create a html template []
+create a html template [x]
 
 create a array to store projects and todo []
 
