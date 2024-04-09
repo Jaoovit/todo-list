@@ -11,7 +11,7 @@ export function displaySideBar() {
 
     projectsList.innerHTML = '';
 
-    myProjects.forEach((project) => {
+    myProjects.forEach((project, index) => {
         const p = document.createElement('p');
         p.setAttribute('id', 'newProject');
         p.textContent = project.title;
@@ -26,6 +26,11 @@ export function displaySideBar() {
         deleteProjectBtn.setAttribute('id', 'deleteProjectBtn');
         deleteProjectBtn.textContent = "x";
         p.appendChild(deleteProjectBtn);
+
+        deleteProjectBtn.addEventListener('click', () => {
+            myProjects.splice(index, 1)
+            p.remove(index);
+        })
     });
 };
     

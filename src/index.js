@@ -15,8 +15,6 @@ const newProject = document.querySelector('#newProject');
 
 displaySideBar();
 
-console.log(newProject.value)
-
 addNewProjectsBtn.addEventListener('click', (e) => {
     e.preventDefault()
     const project = new createNewProjects(newProject.value);
