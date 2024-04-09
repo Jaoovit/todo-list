@@ -4,12 +4,12 @@ pseudocode
 
 create a html template [x]
 
-create a array to store projects and todo []
+create a array to store projects and todo [x]
 
 
-create a Project class []
-    - create new projects []
-        .with projectName, editTitleBtn, deleteBtn.
+create a Project function []
+    - create new projects [x]
+        .with projectName[x], editTitleBtn [x], deleteBtn[x].
 
     - function to set the project name []
     - function to delete a project []

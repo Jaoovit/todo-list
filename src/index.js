@@ -1,11 +1,14 @@
 import { createNewProjects } from "./project";
+import { displayProjects } from "./project";
+import { myProjects } from "./project";
 
-let myPojects = [];
+const firstProject = new createNewProjects('Work Out');
+const secondProject = new createNewProjects('Clean the house');
+const thirdProject = new createNewProjects('Make the bed');
 
-const firstProjects = new createNewProjects('Work Out');
-const secondProject = new createNewProjects('Clean up the house');
+myProjects.push(firstProject);
+myProjects.push(secondProject);
+myProjects.push(thirdProject);
 
-myPojects.push(firstProjects);
-myPojects.push(secondProject);
+displayProjects();
 
-console.log(myPojects);
