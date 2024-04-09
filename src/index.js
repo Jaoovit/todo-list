@@ -1,5 +1,5 @@
 import { createNewProjects } from "./project";
-import { displayProjects } from "./project";
+import { displaySideBar } from "./project";
 import { myProjects } from "./project";
 
 const firstProject = new createNewProjects('Work Out');
@@ -10,5 +10,5 @@ myProjects.push(firstProject);
 myProjects.push(secondProject);
 myProjects.push(thirdProject);
 
-displayProjects();
+displaySideBar();
 

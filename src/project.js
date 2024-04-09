@@ -7,7 +7,7 @@ export let myProjects = [];
 
 export const projectsList = document.querySelector('#projectsList');
 
-export function displayProjects() {
+export function displaySideBar() {
 
     projectsList.innerHTML = '';
 
@@ -26,5 +26,11 @@ export function displayProjects() {
         deleteProjectBtn.setAttribute('id', 'deleteProjectBtn');
         deleteProjectBtn.textContent = "x";
         p.appendChild(deleteProjectBtn);
-    });  
+    });
+
+    const addNewProjectsBtn = document.createElement('button');
+    addNewProjectsBtn.setAttribute('id', 'addNewProjectsBtn');
+    addNewProjectsBtn.textContent = '+';
+    projectsList.appendChild(addNewProjectsBtn);
+
 };
