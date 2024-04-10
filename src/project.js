@@ -1,36 +1,57 @@
 
-export function createNewProjects(title) {
+export function createNewTask(title) {
     this.title = title
 };
 
-export let myProjects = [];
+export let myTasks = [];
 
-export const projectsList = document.querySelector('#projectsList');
+export const tasksList = document.querySelector('#tasksList');
 
-export function displaySideBar() {
+export function displayTasks() {
 
-    projectsList.innerHTML = '';
+    tasksList.innerHTML = '';
 
-    myProjects.forEach((project, index) => {
+    myTasks.forEach((task, index) => {
         const p = document.createElement('p');
         p.setAttribute('id', 'newProject');
-        p.textContent = project.title;
-        projectsList.appendChild(p);
+        p.textContent = task.title;
+        tasksList.appendChild(p);
 
-        const editProjectBtn = document.createElement('button');
-        editProjectBtn.setAttribute('id', 'editProjectBtn');
-        editProjectBtn.textContent = 'edit';
-        p.appendChild(editProjectBtn);
+        const editTaskBtn = document.createElement('button');
+        editTaskBtn.setAttribute('id', 'editTaskBtn');
+        editTaskBtn.textContent = 'edit';
+        p.appendChild(editTaskBtn);
 
-        const deleteProjectBtn = document.createElement('button');
-        deleteProjectBtn.setAttribute('id', 'deleteProjectBtn');
-        deleteProjectBtn.textContent = "x";
-        p.appendChild(deleteProjectBtn);
+        const deleteTaskBtn = document.createElement('button');
+        deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
+        deleteTaskBtn.textContent = "x";
+        p.appendChild(deleteTaskBtn);
 
-        deleteProjectBtn.addEventListener('click', () => {
-            myProjects.splice(index, 1)
+        deleteTaskBtn.addEventListener('click', () => {
+            myTasks.splice(index, 1)
             p.remove(index);
         });
+
+        editTaskBtn.addEventListener('click', () => {
+            p.innerHTML = '<input id="editTaskInput"></input> <button type="submit" id="saveTaskBtn">save</button>';
+            const editTaskInput = document.querySelector('#editTaskInput');
+            const saveTaskBtn = document.querySelector('#saveTaskBtn');
+            
+            saveTaskBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                myTasks[index].title = editTaskInput.value;
+                displayTasks();
+            });
+        });
+
+
+
+    });
+};
+
+/*
+
+// edit project button
 
         editProjectBtn.addEventListener('click', () => {
             p.innerHTML = '<input id="editProjectInput"></input> <button type="submit" id="saveProjectBtn">save</button>';
@@ -39,12 +60,9 @@ export function displaySideBar() {
             
             saveProjectBtn.addEventListener('click', (e) => {
                 e.preventDefault();
-                myProjects[index].title = editProjectInput.value;
-                displaySideBar();
+                myTasks[index].title = editTaskInput.value;
+                displayTasks();
             });
         });
 
-        
-    });
-};
-    
+        */
