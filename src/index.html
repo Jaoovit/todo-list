@@ -22,32 +22,35 @@
     <div id="todoArea">
         <h2>Tasks</h2>
         <div id="tasksList"></div>
+        <button id="openPopUp">+</button>
     </div>
     <form action="#">
+        <button id="closePopUp">x</button>
         <p>
-            <label for="newTitle">Title: </label>
+            <label for="taskTitle">Title: </label>
             <input id="taskTitle" type="text">
         </p>
         <p>
-            <label for="newDescription">Description: </label>
+            <label for="taskDescription">Description: </label>
             <input id="taskDescription" type="text">
         </p>
         <p>
             <input id="taskPriority" type="radio" name="task" value="low priority">
-            <label for="newPriority">low priority</label>
+            <label for="taskPriority">low priority</label>
             <input id="taskPriority" type="radio" name="task" value="important">
-            <label for="newPriority">important</label>
+            <label for="taskPriority">important</label>
             <input id="taskPriority" type="radio" name="task" value="urgent">
-            <label for="newPriority">urgent</label>
+            <label for="taskPriority">urgent</label>
         </p>
         <p>
-            <input type="date">
+            <label for="taskDate"></label>
+            <input id="taskDate" type="date">
         </p>
         <p>
-            <label for="newNote">Note: </label>
+            <label for="taskNote">Note: </label>
             <input id="taskNote" type="text">
         </p>
-        <button type="submit">Create new Task</button>
+        <button id="submitTaskBtn" type="submit">Create new Task</button>
     </form>
 </body>
 </html>

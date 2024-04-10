@@ -1,14 +1,21 @@
 
-export function createNewTask(title, description, priority, note) {
+export function createNewTask(title, description, priority, dueDate, note) {
     this.title = title;
     this.description = description;
     this.priority = priority;
+    this.dueDate = dueDate;
     this.note = note
 };
 
 export let myTasks = [];
 
 export const tasksList = document.querySelector('#tasksList');
+export const submitTaskBtn = document.querySelector('submitTaskBtn')
+export const taskTitle = document.querySelector('#taskTitle');
+export const taskDescription = document.querySelector('#taskDescription');
+export const taskPriority = document.querySelector('#taskPriority');
+export const taskData = document.querySelector ('#taskData');
+export const taskNote = document.querySelector('#taskNote');
 
 export function displayTasks() {
 
@@ -35,6 +42,11 @@ export function displayTasks() {
         priority.textContent = task.priority;
         div.appendChild(priority);
 
+        const date = document.createElement('p');
+        date.setAttribute('id', 'date');
+        date.textContent = task.dueDate;
+        div.appendChild(date);
+
         const note = document.createElement('p');
         note.setAttribute('id', 'note');
         note.textContent = task.note;
@@ -53,17 +65,11 @@ export function displayTasks() {
         deleteTaskBtn.addEventListener('click', () => {
             myTasks.splice(index, 1)
             div.remove(index);
-        });
-
-        
-    });
-
-        const addNewTasksBtn = document.createElement('button');
-        addNewTasksBtn.setAttribute('id', 'addNewTasksBtn');
-        addNewTasksBtn.textContent = '+';
-        tasksList.appendChild(addNewTasksBtn);
-
+        });   
+    });   
 };
+
+
 
 /*
 
