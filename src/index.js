@@ -1,7 +1,7 @@
 import { createNewTask , displayTasks , myTasks} from "./project";
 
-const firstTask = new createNewTask('Work Out');
-const secondTask = new createNewTask('Clean the house');
+const firstTask = new createNewTask('Make the bad', 'organize pillows and sheets', 'important');
+const secondTask = new createNewTask('Sweep the floor', 'clean under furniture with a broom', 'low priority');
 
 
 myTasks.push(firstTask);

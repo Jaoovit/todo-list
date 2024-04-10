@@ -1,6 +1,9 @@
 
-export function createNewTask(title) {
-    this.title = title
+export function createNewTask(title, description, priority, note) {
+    this.title = title;
+    this.description = description;
+    this.priority = priority;
+    this.note = note
 };
 
 export let myTasks = [];
@@ -12,28 +15,48 @@ export function displayTasks() {
     tasksList.innerHTML = '';
 
     myTasks.forEach((task, index) => {
-        const p = document.createElement('p');
-        p.setAttribute('id', 'newProject');
-        p.textContent = task.title;
-        tasksList.appendChild(p);
+
+        const div = document.createElement('div');
+        div.setAttribute('id', 'newTask');
+        tasksList.appendChild(div);
+        
+        const title = document.createElement('p');
+        title.setAttribute('id', 'title');
+        title.textContent = task.title;
+        div.appendChild(title);
+
+        const description = document.createElement('p');
+        description.setAttribute('id', 'description');
+        description.textContent = task.description;
+        div.appendChild(description);
+
+        const priority = document.createElement('p');
+        priority.setAttribute('id', 'priority');
+        priority.textContent = task.priority;
+        div.appendChild(priority);
+
+        const note = document.createElement('p');
+        note.setAttribute('id', 'note');
+        note.textContent = task.note;
+        div.appendChild(note);
 
         const editTaskBtn = document.createElement('button');
         editTaskBtn.setAttribute('id', 'editTaskBtn');
         editTaskBtn.textContent = 'edit';
-        p.appendChild(editTaskBtn);
+        div.appendChild(editTaskBtn);
 
         const deleteTaskBtn = document.createElement('button');
         deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
         deleteTaskBtn.textContent = "x";
-        p.appendChild(deleteTaskBtn);
+        div.appendChild(deleteTaskBtn);
 
         deleteTaskBtn.addEventListener('click', () => {
             myTasks.splice(index, 1)
-            p.remove(index);
+            div.remove(index);
         });
 
         editTaskBtn.addEventListener('click', () => {
-            p.innerHTML = '<input id="editTaskInput"></input> <button type="submit" id="saveTaskBtn">save</button>';
+            div.innerHTML = '<input id="editTaskInput"></input> <button type="submit" id="saveTaskBtn">save</button>';
             const editTaskInput = document.querySelector('#editTaskInput');
             const saveTaskBtn = document.querySelector('#saveTaskBtn');
             
