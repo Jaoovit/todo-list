@@ -47,7 +47,7 @@ export function displayTasks() {
 
         const deleteTaskBtn = document.createElement('button');
         deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
-        deleteTaskBtn.textContent = "x";
+        deleteTaskBtn.textContent = 'x';
         div.appendChild(deleteTaskBtn);
 
         deleteTaskBtn.addEventListener('click', () => {
@@ -55,21 +55,14 @@ export function displayTasks() {
             div.remove(index);
         });
 
-        editTaskBtn.addEventListener('click', () => {
-            div.innerHTML = '<input id="editTaskInput"></input> <button type="submit" id="saveTaskBtn">save</button>';
-            const editTaskInput = document.querySelector('#editTaskInput');
-            const saveTaskBtn = document.querySelector('#saveTaskBtn');
-            
-            saveTaskBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                myTasks[index].title = editTaskInput.value;
-                displayTasks();
-            });
-        });
-
-
-
+        
     });
+
+        const addNewTasksBtn = document.createElement('button');
+        addNewTasksBtn.setAttribute('id', 'addNewTasksBtn');
+        addNewTasksBtn.textContent = '+';
+        tasksList.appendChild(addNewTasksBtn);
+
 };
 
 /*

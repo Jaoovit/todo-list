@@ -23,5 +23,31 @@
         <h2>Tasks</h2>
         <div id="tasksList"></div>
     </div>
+    <form action="#">
+        <p>
+            <label for="newTitle">Title: </label>
+            <input id="taskTitle" type="text">
+        </p>
+        <p>
+            <label for="newDescription">Description: </label>
+            <input id="taskDescription" type="text">
+        </p>
+        <p>
+            <input id="taskPriority" type="radio" name="task" value="low priority">
+            <label for="newPriority">low priority</label>
+            <input id="taskPriority" type="radio" name="task" value="important">
+            <label for="newPriority">important</label>
+            <input id="taskPriority" type="radio" name="task" value="urgent">
+            <label for="newPriority">urgent</label>
+        </p>
+        <p>
+            <input type="date">
+        </p>
+        <p>
+            <label for="newNote">Note: </label>
+            <input id="taskNote" type="text">
+        </p>
+        <button type="submit">Create new Task</button>
+    </form>
 </body>
 </html>
