@@ -10,11 +10,12 @@ export function createNewTask(title, description, priority, dueDate, note) {
 export let myTasks = [];
 
 export const tasksList = document.querySelector('#tasksList');
-export const submitTaskBtn = document.querySelector('submitTaskBtn')
+export const submitTaskBtn = document.querySelector('#submitTaskBtn');
+
 export const taskTitle = document.querySelector('#taskTitle');
 export const taskDescription = document.querySelector('#taskDescription');
-export const taskPriority = document.querySelector('#taskPriority');
-export const taskData = document.querySelector ('#taskData');
+export const taskPriority = document.getElementsByName('taskPriority');
+export const taskDate = document.querySelector('#taskDate');
 export const taskNote = document.querySelector('#taskNote');
 
 export function displayTasks() {
@@ -65,7 +66,7 @@ export function displayTasks() {
         deleteTaskBtn.addEventListener('click', () => {
             myTasks.splice(index, 1)
             div.remove(index);
-        });   
+        });
     });   
 };
 

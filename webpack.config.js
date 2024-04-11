@@ -11,7 +11,8 @@ module.exports = {
     template: './src/index.html',
     filename: 'index.html',
     inject: 'body',
-  })],
+  })
+],
   module: {
     rules: [
       {

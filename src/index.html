@@ -24,7 +24,7 @@
         <div id="tasksList"></div>
         <button id="openPopUp">+</button>
     </div>
-    <form action="#">
+    <form action="#" id="addTaskForm">
         <button id="closePopUp">x</button>
         <p>
             <label for="taskTitle">Title: </label>
@@ -35,16 +35,18 @@
             <input id="taskDescription" type="text">
         </p>
         <p>
-            <input id="taskPriority" type="radio" name="task" value="low priority">
-            <label for="taskPriority">low priority</label>
-            <input id="taskPriority" type="radio" name="task" value="important">
-            <label for="taskPriority">important</label>
-            <input id="taskPriority" type="radio" name="task" value="urgent">
-            <label for="taskPriority">urgent</label>
+            <input type="radio" id="lowpriority" name="taskPriority" value="low priority">
+            <label for="lowpriority">low priority</label>
+
+            <input type="radio" id="important" name="taskPriority" value="important">
+            <label for="important">important</label>
+
+            <input type="radio" id="urgent" name="taskPriority" value="urgent">
+            <label for="urgent">urgent</label>
         </p>
         <p>
-            <label for="taskDate"></label>
             <input id="taskDate" type="date">
+            <label for="taskDate"></label>
         </p>
         <p>
             <label for="taskNote">Note: </label>

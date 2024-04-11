@@ -1,8 +1,7 @@
-import { createNewTask , displayTasks , myTasks} from "./project";
+import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, submitTaskBtn} from "./project";
 
 const firstTask = new createNewTask('Make the bad', 'organize pillows and sheets', 'important', '04/10/2024');
 const secondTask = new createNewTask('Sweep the floor', 'clean under furniture with a broom', 'low priority', '04/10/2024');
-
 
 myTasks.push(firstTask);
 myTasks.push(secondTask);
@@ -11,9 +10,15 @@ displayTasks();
 
 submitTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    const newTask = new createNewTask(taskTitle.value, taskDescription.value, taskPriority.value, taskDate.value, taskNote.value);
-    myTasks.push(newTask);
-    displayTasks();
+
+    taskPriority.forEach(radio => {
+        if (radio.checked) {
+            const newTask = new createNewTask(taskTitle.value, taskDescription.value, radio.value, taskDate.value, taskNote.value);
+            myTasks.push(newTask);
+            displayTasks();
+        }
+    });
+    
 })
 
 
