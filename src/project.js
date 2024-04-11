@@ -1,4 +1,28 @@
 
+export const projectList = document.querySelector('#projectsList');
+
+export function createNewProjects(name, tasks) {
+    this.name = name;
+    this.tasks = tasks
+};
+
+export let myProjects = [];
+
+export function displayProjects() {
+
+        myProjects.forEach((project) => {
+            const projectName = document.createElement('p');
+            projectName.setAttribute('id', 'projectName');
+            projectName.textContent = project.name;
+            projectList.appendChild(projectName);
+
+            projectName.addEventListener('click', () => {
+                displayTasks();
+                })
+        })
+    
+}
+
 export function createNewTask(title, description, priority, dueDate, note) {
     this.title = title;
     this.description = description;

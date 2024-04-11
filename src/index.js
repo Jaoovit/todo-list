@@ -1,4 +1,12 @@
-import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, submitTaskBtn} from "./project";
+import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, submitTaskBtn, createNewProjects, myProjects, displayProjects } from "./project";
+
+// create projects
+
+const firstProject = new createNewProjects('Clean up the room', myTasks);
+
+myProjects.push(firstProject);
+
+//create tasks
 
 const firstTask = new createNewTask('Make the bad', 'organize pillows and sheets', 'important', '04/10/2024');
 const secondTask = new createNewTask('Sweep the floor', 'clean under furniture with a broom', 'low priority', '04/10/2024');
@@ -6,7 +14,12 @@ const secondTask = new createNewTask('Sweep the floor', 'clean under furniture w
 myTasks.push(firstTask);
 myTasks.push(secondTask);
 
+
+displayProjects();
+
 displayTasks();
+
+///
 
 submitTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -16,10 +29,11 @@ submitTaskBtn.addEventListener('click', (e) => {
             const newTask = new createNewTask(taskTitle.value, taskDescription.value, radio.value, taskDate.value, taskNote.value);
             myTasks.push(newTask);
             displayTasks();
-        }
+        };
     });
-    
-})
+});
+
+
 
 
 
