@@ -1,34 +1,10 @@
-
-export const projectList = document.querySelector('#projectsList');
-
-export function createNewProjects(name, tasks) {
-    this.name = name;
-    this.tasks = tasks
-};
-
-export let myProjects = [];
-
-export function displayProjects() {
-
-        myProjects.forEach((project) => {
-            const projectName = document.createElement('p');
-            projectName.setAttribute('id', 'projectName');
-            projectName.textContent = project.name;
-            projectList.appendChild(projectName);
-
-            projectName.addEventListener('click', () => {
-                displayTasks();
-                })
-        })
-    
-}
-
-export function createNewTask(title, description, priority, dueDate, note) {
+export function createNewTask(title, description, priority, dueDate, note, project) {
     this.title = title;
     this.description = description;
     this.priority = priority;
     this.dueDate = dueDate;
-    this.note = note
+    this.note = note;
+    this.project = project
 };
 
 export let myTasks = [];
@@ -41,6 +17,7 @@ export const taskDescription = document.querySelector('#taskDescription');
 export const taskPriority = document.getElementsByName('taskPriority');
 export const taskDate = document.querySelector('#taskDate');
 export const taskNote = document.querySelector('#taskNote');
+export const taskProject = document.querySelector('#taskProject');
 
 export function displayTasks() {
 
@@ -93,23 +70,3 @@ export function displayTasks() {
         });
     });   
 };
-
-
-
-/*
-
-// edit project button
-
-        editProjectBtn.addEventListener('click', () => {
-            p.innerHTML = '<input id="editProjectInput"></input> <button type="submit" id="saveProjectBtn">save</button>';
-            const editProjectInput = document.querySelector('#editProjectInput');
-            const saveProjectBtn = document.querySelector('#saveProjectBtn');
-            
-            saveProjectBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                myTasks[index].title = editTaskInput.value;
-                displayTasks();
-            });
-        });
-
-        */
