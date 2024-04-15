@@ -31,6 +31,7 @@ const addNewProjectsBtn = document.querySelector('#addNewProjectsBtn');
 const newProject = document.querySelector('#newProject');
 addNewProjectsBtn.addEventListener('click', (e) => {
     e.preventDefault();
+    taskProject.innerHTML += `<option value="${newProject.value}">${newProject.value}</option>`
     const anotherProject = new createNewProject(newProject.value);
     myProjects.push(anotherProject);
     
