@@ -35,10 +35,6 @@ export function createNewProject(name) {
     this.name = name
 };
 
-const exProject = new createNewProject('Clean the House');
-myProjects.push(exProject);
-
-
 export let projectName = '';
 
 

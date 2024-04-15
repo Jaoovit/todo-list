@@ -4,10 +4,6 @@ const addTaskForm = document.querySelector('#addTaskForm');
 
 //create tasks
 
-const firstTask = new createNewTask('Make the bad', 'organize pillows and sheets', 'important', '04/10/2024', 'do it everyday', 'Clean the House');
-
-myTasks.push(firstTask);
-
 submitTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
 
@@ -37,8 +33,8 @@ addNewProjectsBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const anotherProject = new createNewProject(newProject.value);
     myProjects.push(anotherProject);
-    
     renderProjects();
+    newProject.value = '';
 });
 
 //render projects
@@ -84,7 +80,6 @@ function renderProjects() {
 };
 
 renderProjects();
-displayAllTasks();
 
 
 
