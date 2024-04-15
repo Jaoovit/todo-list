@@ -1,5 +1,9 @@
 import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName, displayAllTasks } from "./project";
 
+const openEditTaskPopUp = document.querySelector('#openPopUp');
+const closeEditTaskPopUp = document.querySelector('#closePopUp');
+const dialog = document.querySelector('dialog');
+
 //create tasks
 
 const firstTask = new createNewTask('Make the bad', 'organize pillows and sheets', 'important', '04/10/2024', 'do it everyday', 'Clean the House');
@@ -18,6 +22,7 @@ submitTaskBtn.addEventListener('click', (e) => {
             projectTodoName.textContent = taskProject.value;
 
             displayTasks();
+            dialog.close();
         };
     });
 });
@@ -63,7 +68,17 @@ function renderProjects() {
             displayTasks();
         })
 
-        const deleteProjectBtn = document.createElement('button')
+        const editProjectBtn = document.createElement('button');
+        editProjectBtn.setAttribute('id', 'editProjectBtn');
+        editProjectBtn.textContent = 'edit';
+
+        // Use a dialog to edit project name
+        editProjectBtn.addEventListener('click', () => {
+
+        })
+        //
+
+        const deleteProjectBtn = document.createElement('button');
         deleteProjectBtn.setAttribute('id', 'deleteProjectBtn');
         deleteProjectBtn.textContent = 'x';
         deleteProjectBtn.addEventListener('click', () => {
@@ -74,10 +89,23 @@ function renderProjects() {
 
         p.appendChild(nameProject);
         p.appendChild(deleteProjectBtn);
+        p.appendChild(editProjectBtn);
 
         projectsList.appendChild(p);
     });
 };
 
-renderProjects()
-displayAllTasks()
+renderProjects();
+displayAllTasks();
+
+
+
+openEditTaskPopUp.addEventListener('click', () => {
+    dialog.showModal();
+});
+
+closeEditTaskPopUp.addEventListener('click', () => {
+    dialog.close();
+})
+
+

@@ -25,41 +25,43 @@
         <div id="tasksList"></div>
         <button id="openPopUp">+</button>
     </div>
-    <form action="#" id="addTaskForm">
-        <button id="closePopUp">x</button>
-        <p>
-            <label for="taskTitle">Title: </label>
-            <input id="taskTitle" type="text">
-        </p>
-        <p>
-            <label for="taskDescription">Description: </label>
-            <input id="taskDescription" type="text">
-        </p>
-        <p>
-            <input type="radio" id="lowpriority" name="taskPriority" value="low priority">
-            <label for="lowpriority">low priority</label>
+    <dialog>
+        <form action="#" id="addTaskForm">
+            <button id="closePopUp">x</button>
+            <p>
+                <label for="taskTitle">Title: </label>
+                <input id="taskTitle" type="text">
+            </p>
+            <p>
+                <label for="taskDescription">Description: </label>
+                <input id="taskDescription" type="text">
+            </p>
+            <p>
+                <input type="radio" id="lowpriority" name="taskPriority" value="low priority">
+                <label for="lowpriority">low priority</label>
 
-            <input type="radio" id="important" name="taskPriority" value="important">
-            <label for="important">important</label>
+                <input type="radio" id="important" name="taskPriority" value="important">
+                <label for="important">important</label>
 
-            <input type="radio" id="urgent" name="taskPriority" value="urgent">
-            <label for="urgent">urgent</label>
-        </p>
-        <p>
-            <input id="taskDate" type="date">
-            <label for="taskDate"></label>
-        </p>
-        <p>
-            <label for="taskNote">Note: </label>
-            <input id="taskNote" type="text">
-        </p>
-        <p>
-            <label for="taskProject">Project: </label>
-            <select id="taskProject" name="taskProject">
-                
-            </select>
-        </p>
-        <button id="submitTaskBtn" type="submit">Create new Task</button>
-    </form>
+                <input type="radio" id="urgent" name="taskPriority" value="urgent">
+                <label for="urgent">urgent</label>
+            </p>
+            <p>
+                <input id="taskDate" type="date">
+                <label for="taskDate"></label>
+            </p>
+            <p>
+                <label for="taskNote">Note: </label>
+                <input id="taskNote" type="text">
+            </p>
+            <p>
+                <label for="taskProject">Project: </label>
+                <select id="taskProject" name="taskProject">
+                    
+                </select>
+            </p>
+            <button id="submitTaskBtn" type="submit">Create new Task</button>
+        </form>
+    </dialog>
 </body>
 </html>
