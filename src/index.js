@@ -13,7 +13,11 @@ submitTaskBtn.addEventListener('click', (e) => {
         if (radio.checked) {
             const newTask = new createNewTask(taskTitle.value, taskDescription.value, radio.value, taskDate.value, taskNote.value, taskProject.value);
             myTasks.push(newTask);
-            console.log(myTasks);
+
+            projectName = taskProject.value;
+            projectTodoName.textContent = taskProject.value;
+
+            displayTasks();
         };
     });
 });
@@ -21,6 +25,7 @@ submitTaskBtn.addEventListener('click', (e) => {
 //add new project
 
 const projectsList = document.querySelector('#projectsList');
+const projectTodoName = document.querySelector('#projectTodoName')
 
 const addNewProjectsBtn = document.querySelector('#addNewProjectsBtn');
 const newProject = document.querySelector('#newProject');
@@ -28,7 +33,7 @@ addNewProjectsBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const anotherProject = new createNewProject(newProject.value);
     myProjects.push(anotherProject);
-    console.log(myProjects);
+    
     renderProjects();
 });
 
@@ -41,14 +46,16 @@ function renderProjects() {
         myProjects.forEach((project, index) => {
         const p = document.createElement('p');
 
+        
         const nameProject = document.createElement('div');
         nameProject.setAttribute('id', 'nameProject');
         nameProject.textContent = project.name;
 
         nameProject.addEventListener('click', () => {
+            projectTodoName.textContent = project.name;
             projectName = project.name;
             if (projectName == 'All tasks') {
-                displayAllTasks()
+                displayAllTasks();
             } else {
                 displayTasks();
             }
@@ -59,6 +66,7 @@ function renderProjects() {
         deleteProjectBtn.textContent = 'x';
         deleteProjectBtn.addEventListener('click', () => {
             myProjects.splice(index, 1);
+            displayAllTasks()
             p.remove(index);
         })
 
@@ -70,3 +78,4 @@ function renderProjects() {
 };
 
 renderProjects()
+displayAllTasks()

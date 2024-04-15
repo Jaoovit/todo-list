@@ -19,7 +19,6 @@ export const taskDate = document.querySelector('#taskDate');
 export const taskNote = document.querySelector('#taskNote');
 export const taskProject = document.querySelector('#taskProject');
 
-
 export let myProjects = [];
 
 export function createNewProject(name) {
@@ -97,6 +96,9 @@ export function displayAllTasks() {
     tasksList.innerHTML = '';
 
     myTasks.forEach((task, index) => {
+
+        projectName = 'All tasks';
+        projectTodoName.textContent = projectName;
 
         const div = document.createElement('div');
         div.setAttribute('id', 'newTask');
