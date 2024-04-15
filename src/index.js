@@ -1,8 +1,6 @@
-import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName, displayAllTasks } from "./project";
+import { openEditTaskPopUp, closeEditTaskPopUp, dialog, createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName, displayAllTasks } from "./project";
 
-const openEditTaskPopUp = document.querySelector('#openPopUp');
-const closeEditTaskPopUp = document.querySelector('#closePopUp');
-const dialog = document.querySelector('dialog');
+const addTaskForm = document.querySelector('#addTaskForm');
 
 //create tasks
 
@@ -23,6 +21,7 @@ submitTaskBtn.addEventListener('click', (e) => {
 
             displayTasks();
             dialog.close();
+            addTaskForm.reset();
         };
     });
 });
@@ -67,17 +66,7 @@ function renderProjects() {
             projectName = project.name;
             displayTasks();
         })
-
-        const editProjectBtn = document.createElement('button');
-        editProjectBtn.setAttribute('id', 'editProjectBtn');
-        editProjectBtn.textContent = 'edit';
-
-        // Use a dialog to edit project name
-        editProjectBtn.addEventListener('click', () => {
-
-        })
-        //
-
+        
         const deleteProjectBtn = document.createElement('button');
         deleteProjectBtn.setAttribute('id', 'deleteProjectBtn');
         deleteProjectBtn.textContent = 'x';
@@ -89,7 +78,6 @@ function renderProjects() {
 
         p.appendChild(nameProject);
         p.appendChild(deleteProjectBtn);
-        p.appendChild(editProjectBtn);
 
         projectsList.appendChild(p);
     });

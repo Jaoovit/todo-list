@@ -9,6 +9,10 @@ export function createNewTask(title, description, priority, dueDate, note, proje
 
 export let myTasks = [];
 
+export const openEditTaskPopUp = document.querySelector('#openPopUp');
+export const closeEditTaskPopUp = document.querySelector('#closePopUp');
+export const dialog = document.querySelector('dialog');
+
 export const tasksList = document.querySelector('#tasksList');
 export const submitTaskBtn = document.querySelector('#submitTaskBtn');
 
@@ -82,13 +86,32 @@ export function displayTasks() {
         editTaskBtn.textContent = 'edit';
         div.appendChild(editTaskBtn);
 
+        editTaskBtn.addEventListener('click', () => {
+            dialog.showModal();
+            taskTitle.value = task.title;
+            taskDescription.value = task.description;
+            
+            if(task.priority == 'low priority') {
+                taskPriority[0].checked = 'true';
+            } else if (task.priority == 'important'){
+                taskPriority[1].checked = 'true';
+            } else if (task.priority == 'urgent'){
+                taskPriority[2].checked = 'true';
+            };
+
+
+            taskNote.value = task.note;
+            myTasks.splice(index, 1);
+        })
+
         const deleteTaskBtn = document.createElement('button');
         deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
         deleteTaskBtn.textContent = 'x';
         div.appendChild(deleteTaskBtn);
+        
 
         deleteTaskBtn.addEventListener('click', () => {
-            myTasks.splice(index, 1)
+            myTasks.splice(index, 1);
             div.remove(index);
         });
     });   
@@ -135,6 +158,24 @@ export function displayAllTasks() {
         editTaskBtn.setAttribute('id', 'editTaskBtn');
         editTaskBtn.textContent = 'edit';
         div.appendChild(editTaskBtn);
+
+        editTaskBtn.addEventListener('click', () => {
+            dialog.showModal();
+            taskTitle.value = task.title;
+            taskDescription.value = task.description;
+            taskNote.value = task.note;
+
+            if(task.priority == 'low priority') {
+                taskPriority[0].checked = 'true';
+            } else if (task.priority == 'important'){
+                taskPriority[1].checked = 'true';
+            } else if (task.priority == 'urgent'){
+                taskPriority[2].checked = 'true';
+            };
+
+            console.log(task.priority)
+            myTasks.splice(index, 1);
+        })
 
         const deleteTaskBtn = document.createElement('button');
         deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
