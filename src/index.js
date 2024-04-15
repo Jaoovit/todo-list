@@ -1,12 +1,10 @@
-import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName } from "./project";
+import { createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName, displayAllTasks } from "./project";
 
 //create tasks
 
 const firstTask = new createNewTask('Make the bad', 'organize pillows and sheets', 'important', '04/10/2024', 'do it everyday', 'Clean the House');
-const secondTask = new createNewTask('Sweep the floor', 'clean under mat with a broom', 'low priority', '04/10/2024','', 'Wash the Car');
 
 myTasks.push(firstTask);
-myTasks.push(secondTask);
 
 submitTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -46,10 +44,14 @@ function renderProjects() {
         const nameProject = document.createElement('div');
         nameProject.setAttribute('id', 'nameProject');
         nameProject.textContent = project.name;
+
         nameProject.addEventListener('click', () => {
             projectName = project.name;
-            console.log(projectName)
-            displayTasks();
+            if (projectName == 'All tasks') {
+                displayAllTasks()
+            } else {
+                displayTasks();
+            }
         })
 
         const deleteProjectBtn = document.createElement('button')
