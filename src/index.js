@@ -31,7 +31,6 @@ const addNewProjectsBtn = document.querySelector('#addNewProjectsBtn');
 const newProject = document.querySelector('#newProject');
 addNewProjectsBtn.addEventListener('click', (e) => {
     e.preventDefault();
-    taskProject.innerHTML += `<option value="${newProject.value}">${newProject.value}</option>`
     const anotherProject = new createNewProject(newProject.value);
     myProjects.push(anotherProject);
     
@@ -44,7 +43,13 @@ function renderProjects() {
 
     projectsList.innerHTML = '';
 
+    taskProject.innerHTML = '';
+
         myProjects.forEach((project, index) => {
+
+
+        taskProject.innerHTML += `<option value="${project.name}">${project.name}</option>`
+
         const p = document.createElement('p');
 
         
@@ -55,11 +60,7 @@ function renderProjects() {
         nameProject.addEventListener('click', () => {
             projectTodoName.textContent = project.name;
             projectName = project.name;
-            if (projectName == 'All tasks') {
-                displayAllTasks();
-            } else {
-                displayTasks();
-            }
+            displayTasks();
         })
 
         const deleteProjectBtn = document.createElement('button')

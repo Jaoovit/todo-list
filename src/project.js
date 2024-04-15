@@ -19,20 +19,23 @@ export const taskDate = document.querySelector('#taskDate');
 export const taskNote = document.querySelector('#taskNote');
 export const taskProject = document.querySelector('#taskProject');
 
+const allTasks = document.querySelector('#allTasks');
+
+allTasks.addEventListener('click', () => {
+    displayAllTasks()
+})
+
 export let myProjects = [];
 
 export function createNewProject(name) {
     this.name = name
 };
 
-const allTasks = new createNewProject('All tasks');
-myProjects.push(allTasks);
-
 const exProject = new createNewProject('Clean the House');
 myProjects.push(exProject);
 
 
-export let projectName = 'All tasks';
+export let projectName = '';
 
 
 export function displayTasks() {
@@ -97,8 +100,7 @@ export function displayAllTasks() {
 
     myTasks.forEach((task, index) => {
 
-        projectName = 'All tasks';
-        projectTodoName.textContent = projectName;
+        projectTodoName.textContent = 'All tasks';
 
         const div = document.createElement('div');
         div.setAttribute('id', 'newTask');
