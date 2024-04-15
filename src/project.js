@@ -19,11 +19,34 @@ export const taskDate = document.querySelector('#taskDate');
 export const taskNote = document.querySelector('#taskNote');
 export const taskProject = document.querySelector('#taskProject');
 
+//const projects = document.querySelectorAll('#project');
+
+export let myProjects = [];
+
+export function createNewProject(name) {
+    this.name = name
+};
+
+const exProject = new createNewProject('Clean the House');
+myProjects.push(exProject);
+
+
+export let projectName = '';
+
+
 export function displayTasks() {
 
     tasksList.innerHTML = '';
 
-    myTasks.forEach((task, index) => {
+    let filterProject = myTasks.filter(function(project) {
+        return project.project === projectName;
+       });
+
+    console.log(myTasks)
+    console.log(filterProject)
+    
+
+    filterProject.forEach((task, index) => {
 
         const div = document.createElement('div');
         div.setAttribute('id', 'newTask');
