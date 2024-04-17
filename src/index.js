@@ -1,12 +1,9 @@
-import { openEditTaskPopUp, closeEditTaskPopUp, dialog, createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName, displayAllTasks } from "./project";
-
-const addTaskForm = document.querySelector('#addTaskForm');
+import {addTaskForm, openTaskPopUp, closeTaskPopUp, dialog, createNewTask , displayTasks , myTasks, taskDate, taskDescription, taskPriority, taskTitle, taskNote, tasksList, submitTaskBtn, taskProject, createNewProject, myProjects, projectName, displayAllTasks } from "./project";
 
 //create tasks
 
 submitTaskBtn.addEventListener('click', (e) => {
     e.preventDefault();
-
     taskPriority.forEach(radio => {
         if (radio.checked) {
             const newTask = new createNewTask(taskTitle.value, taskDescription.value, radio.value, taskDate.value, taskNote.value, taskProject.value);
@@ -18,8 +15,13 @@ submitTaskBtn.addEventListener('click', (e) => {
             displayTasks();
             dialog.close();
             addTaskForm.reset();
+            closeTaskPopUp.style.display = 'block';
         };
     });
+});
+
+closeTaskPopUp.addEventListener('click', () => {
+    dialog.close();
 });
 
 //add new project
@@ -81,14 +83,9 @@ function renderProjects() {
 
 renderProjects();
 
-
-
-openEditTaskPopUp.addEventListener('click', () => {
+openTaskPopUp.addEventListener('click', () => {
     dialog.showModal();
 });
 
-closeEditTaskPopUp.addEventListener('click', () => {
-    dialog.close();
-})
 
 

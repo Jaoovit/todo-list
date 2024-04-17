@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
+    <style>
+        #closePopUp {
+            display: block;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -28,8 +33,8 @@
         <button id="openPopUp">+</button>
     </div>
     <dialog>
+        <button id="closePopUp">x</button>
         <form action="#" id="addTaskForm">
-            <button id="closePopUp">x</button>
             <p>
                 <label for="taskTitle">Title: </label>
                 <input id="taskTitle" type="text">

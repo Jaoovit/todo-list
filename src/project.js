@@ -9,8 +9,10 @@ export function createNewTask(title, description, priority, dueDate, note, proje
 
 export let myTasks = [];
 
-export const openEditTaskPopUp = document.querySelector('#openPopUp');
-export const closeEditTaskPopUp = document.querySelector('#closePopUp');
+export const addTaskForm = document.querySelector('#addTaskForm');
+
+export const openTaskPopUp = document.querySelector('#openPopUp');
+export const closeTaskPopUp = document.querySelector('#closePopUp');
 export const dialog = document.querySelector('dialog');
 
 export const tasksList = document.querySelector('#tasksList');
@@ -86,6 +88,8 @@ export function displayTasks() {
             dialog.showModal();
             taskTitle.value = task.title;
             taskDescription.value = task.description;
+            taskNote.value = task.note;
+            taskDate.value = task.dueDate;
             
             if(task.priority == 'low priority') {
                 taskPriority[0].checked = 'true';
@@ -95,9 +99,8 @@ export function displayTasks() {
                 taskPriority[2].checked = 'true';
             };
 
-
-            taskNote.value = task.note;
             myTasks.splice(index, 1);
+            closeTaskPopUp.style.display = 'none';
         })
 
         const deleteTaskBtn = document.createElement('button');
@@ -160,6 +163,7 @@ export function displayAllTasks() {
             taskTitle.value = task.title;
             taskDescription.value = task.description;
             taskNote.value = task.note;
+            taskDate.value = task.dueDate;
 
             if(task.priority == 'low priority') {
                 taskPriority[0].checked = 'true';
@@ -168,9 +172,8 @@ export function displayAllTasks() {
             } else if (task.priority == 'urgent'){
                 taskPriority[2].checked = 'true';
             };
-
-            console.log(task.priority)
             myTasks.splice(index, 1);
+            closeTaskPopUp.style.display = 'none';
         })
 
         const deleteTaskBtn = document.createElement('button');
