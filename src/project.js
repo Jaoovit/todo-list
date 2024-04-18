@@ -33,6 +33,7 @@ allTasks.addEventListener('click', () => {
 
 export let myProjects = [];
 
+
 export function createNewProject(name) {
     this.name = name
 };

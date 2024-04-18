@@ -14,23 +14,26 @@
     <header>
         <h1>Todo List</h1>
     </header>
-    <div id="sideBar">
-        <h2>Projects</h2>
-        <p id="allTasks">All tasks</p>
-        <p id="today">Today</p>
-        <p id="thisWeek">This Week</p>
-        <div id="projectsList">
+    <div id="container">
+        <div id="sideBar">
+            <h2 id="projects">Projects</h2>
+            <div id="timeZone">
+                <p id="allTasks">All tasks</p>
+                <p id="today">Today</p>
+                <p id="thisWeek">This Week</p>
+            </div>
+            <div id="projectsList"></div>
+            <form action="#">
+                <label for="newProject"></label>
+                <input id="newProject" type="text" placeholder="New project">
+                <button type="submit" id="addNewProjectsBtn">+</button>
+            </form>
         </div>
-        <form action="#">
-            <label for="newProject"></label>
-            <input id="newProject" type="text" placeholder="New project">
-            <button type="submit" id="addNewProjectsBtn">+</button>
-        </form>
-    </div>
-    <div id="todoArea">
-        <h2 id="projectTodoName"></h2>
-        <div id="tasksList"></div>
-        <button id="openPopUp">+</button>
+        <div id="todoArea">
+            <h2 id="projectTodoName"></h2>
+            <div id="tasksList"></div>
+            <button id="openPopUp">+</button>
+        </div>
     </div>
     <dialog>
         <button id="closePopUp">x</button>
