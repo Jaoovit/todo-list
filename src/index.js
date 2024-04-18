@@ -18,9 +18,10 @@ import {
   projectName,
   displayAllTasks,
   saveTask,
+  displayTodayTasks,
 } from "./project";
 import "./style.css";
-import { format, formatDate } from "date-fns";
+import { format } from "date-fns";
 
 //create tasks
 
@@ -121,4 +122,10 @@ renderProjects();
 
 openTaskPopUp.addEventListener("click", () => {
   dialog.showModal();
+});
+
+const todayBtn = document.querySelector("#today");
+
+todayBtn.addEventListener("click", () => {
+  displayTodayTasks();
 });
