@@ -43,8 +43,6 @@ allTasks.addEventListener("click", () => {
   displayAllTasks();
 });
 
-//export let myProjects = [];
-
 const projectsFromLocalStore = localStorage.getItem("localProjects");
 export let myProjects = JSON.parse(projectsFromLocalStore) || [];
 

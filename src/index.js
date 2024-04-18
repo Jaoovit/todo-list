@@ -20,6 +20,7 @@ import {
   saveTask,
 } from "./project";
 import "./style.css";
+import { format, formatDate } from "date-fns";
 
 //create tasks
 
@@ -31,7 +32,7 @@ submitTaskBtn.addEventListener("click", (e) => {
         taskTitle.value,
         taskDescription.value,
         radio.value,
-        taskDate.value,
+        format(new Date(taskDate.value), "MM/dd/yyyy"),
         taskNote.value,
         taskProject.value
       );
@@ -46,6 +47,8 @@ submitTaskBtn.addEventListener("click", (e) => {
     }
   });
 });
+
+displayAllTasks();
 
 closeTaskPopUp.addEventListener("click", () => {
   dialog.close();
