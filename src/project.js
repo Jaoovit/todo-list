@@ -1,190 +1,202 @@
-export function createNewTask(title, description, priority, dueDate, note, project) {
-    this.title = title;
-    this.description = description;
-    this.priority = priority;
-    this.dueDate = dueDate;
-    this.note = note;
-    this.project = project
-};
+export function createNewTask(
+  title,
+  description,
+  priority,
+  dueDate,
+  note,
+  project
+) {
+  this.title = title;
+  this.description = description;
+  this.priority = priority;
+  this.dueDate = dueDate;
+  this.note = note;
+  this.project = project;
+}
 
-export let myTasks = [];
+const tasksFromLocalStore = localStorage.getItem("localTasks");
+export let myTasks = JSON.parse(tasksFromLocalStore) || [];
 
-export const addTaskForm = document.querySelector('#addTaskForm');
+export function saveTask() {
+  localStorage.setItem("localTasks", JSON.stringify(myTasks));
+}
 
-export const openTaskPopUp = document.querySelector('#openPopUp');
-export const closeTaskPopUp = document.querySelector('#closePopUp');
-export const dialog = document.querySelector('dialog');
+export const addTaskForm = document.querySelector("#addTaskForm");
 
-export const tasksList = document.querySelector('#tasksList');
-export const submitTaskBtn = document.querySelector('#submitTaskBtn');
+export const openTaskPopUp = document.querySelector("#openPopUp");
+export const closeTaskPopUp = document.querySelector("#closePopUp");
+export const dialog = document.querySelector("dialog");
 
-export const taskTitle = document.querySelector('#taskTitle');
-export const taskDescription = document.querySelector('#taskDescription');
-export const taskPriority = document.getElementsByName('taskPriority');
-export const taskDate = document.querySelector('#taskDate');
-export const taskNote = document.querySelector('#taskNote');
-export const taskProject = document.querySelector('#taskProject');
+export const tasksList = document.querySelector("#tasksList");
+export const submitTaskBtn = document.querySelector("#submitTaskBtn");
 
-const allTasks = document.querySelector('#allTasks');
+export const taskTitle = document.querySelector("#taskTitle");
+export const taskDescription = document.querySelector("#taskDescription");
+export const taskPriority = document.getElementsByName("taskPriority");
+export const taskDate = document.querySelector("#taskDate");
+export const taskNote = document.querySelector("#taskNote");
+export const taskProject = document.querySelector("#taskProject");
 
-allTasks.addEventListener('click', () => {
-    displayAllTasks()
-})
+const allTasks = document.querySelector("#allTasks");
 
-export let myProjects = [];
+allTasks.addEventListener("click", () => {
+  displayAllTasks();
+});
 
+//export let myProjects = [];
+
+const projectsFromLocalStore = localStorage.getItem("localProjects");
+export let myProjects = JSON.parse(projectsFromLocalStore) || [];
 
 export function createNewProject(name) {
-    this.name = name
-};
+  this.name = name;
+}
 
-export let projectName = '';
-
+export let projectName = "";
 
 export function displayTasks() {
+  tasksList.innerHTML = "";
 
-    tasksList.innerHTML = '';
+  let filterProject = myTasks.filter(function (project) {
+    return project.project === projectName;
+  });
 
-    let filterProject = myTasks.filter(function(project) {
-        return project.project === projectName;
-       });
+  filterProject.forEach((task, index) => {
+    const div = document.createElement("div");
+    div.setAttribute("id", "newTask");
+    tasksList.appendChild(div);
 
-    filterProject.forEach((task, index) => {
+    const title = document.createElement("p");
+    title.setAttribute("id", "title");
+    title.textContent = task.title;
+    div.appendChild(title);
 
-        const div = document.createElement('div');
-        div.setAttribute('id', 'newTask');
-        tasksList.appendChild(div);
-        
-        const title = document.createElement('p');
-        title.setAttribute('id', 'title');
-        title.textContent = task.title;
-        div.appendChild(title);
+    const description = document.createElement("p");
+    description.setAttribute("id", "description");
+    description.textContent = task.description;
+    div.appendChild(description);
 
-        const description = document.createElement('p');
-        description.setAttribute('id', 'description');
-        description.textContent = task.description;
-        div.appendChild(description);
+    const priority = document.createElement("p");
+    priority.setAttribute("id", "priority");
+    priority.textContent = task.priority;
+    div.appendChild(priority);
 
-        const priority = document.createElement('p');
-        priority.setAttribute('id', 'priority');
-        priority.textContent = task.priority;
-        div.appendChild(priority);
+    const date = document.createElement("p");
+    date.setAttribute("id", "date");
+    date.textContent = task.dueDate;
+    div.appendChild(date);
 
-        const date = document.createElement('p');
-        date.setAttribute('id', 'date');
-        date.textContent = task.dueDate;
-        div.appendChild(date);
+    const note = document.createElement("p");
+    note.setAttribute("id", "note");
+    note.textContent = task.note;
+    div.appendChild(note);
 
-        const note = document.createElement('p');
-        note.setAttribute('id', 'note');
-        note.textContent = task.note;
-        div.appendChild(note);
+    const editTaskBtn = document.createElement("button");
+    editTaskBtn.setAttribute("id", "editTaskBtn");
+    editTaskBtn.textContent = "edit";
+    div.appendChild(editTaskBtn);
 
-        const editTaskBtn = document.createElement('button');
-        editTaskBtn.setAttribute('id', 'editTaskBtn');
-        editTaskBtn.textContent = 'edit';
-        div.appendChild(editTaskBtn);
+    editTaskBtn.addEventListener("click", () => {
+      dialog.showModal();
+      taskTitle.value = task.title;
+      taskDescription.value = task.description;
+      taskNote.value = task.note;
+      taskDate.value = task.dueDate;
 
-        editTaskBtn.addEventListener('click', () => {
-            dialog.showModal();
-            taskTitle.value = task.title;
-            taskDescription.value = task.description;
-            taskNote.value = task.note;
-            taskDate.value = task.dueDate;
-            
-            if(task.priority == 'low priority') {
-                taskPriority[0].checked = 'true';
-            } else if (task.priority == 'important'){
-                taskPriority[1].checked = 'true';
-            } else if (task.priority == 'urgent'){
-                taskPriority[2].checked = 'true';
-            };
+      if (task.priority == "low priority") {
+        taskPriority[0].checked = "true";
+      } else if (task.priority == "important") {
+        taskPriority[1].checked = "true";
+      } else if (task.priority == "urgent") {
+        taskPriority[2].checked = "true";
+      }
 
-            myTasks.splice(index, 1);
-            closeTaskPopUp.style.display = 'none';
-        })
+      myTasks.splice(index, 1);
+      saveTask();
+      closeTaskPopUp.style.display = "none";
+    });
 
-        const deleteTaskBtn = document.createElement('button');
-        deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
-        deleteTaskBtn.textContent = 'x';
-        div.appendChild(deleteTaskBtn);
-        
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
+    deleteTaskBtn.textContent = "x";
+    div.appendChild(deleteTaskBtn);
 
-        deleteTaskBtn.addEventListener('click', () => {
-            myTasks.splice(index, 1);
-            div.remove(index);
-        });
-    });   
-};
+    deleteTaskBtn.addEventListener("click", () => {
+      myTasks.splice(index, 1);
+      div.remove(index);
+      saveTask();
+    });
+  });
+}
 
 export function displayAllTasks() {
+  tasksList.innerHTML = "";
 
-    tasksList.innerHTML = '';
+  myTasks.forEach((task, index) => {
+    projectTodoName.textContent = "All tasks";
 
-    myTasks.forEach((task, index) => {
+    const div = document.createElement("div");
+    div.setAttribute("id", "newTask");
+    tasksList.appendChild(div);
 
-        projectTodoName.textContent = 'All tasks';
+    const title = document.createElement("p");
+    title.setAttribute("id", "title");
+    title.textContent = task.title;
+    div.appendChild(title);
 
-        const div = document.createElement('div');
-        div.setAttribute('id', 'newTask');
-        tasksList.appendChild(div);
-        
-        const title = document.createElement('p');
-        title.setAttribute('id', 'title');
-        title.textContent = task.title;
-        div.appendChild(title);
+    const description = document.createElement("p");
+    description.setAttribute("id", "description");
+    description.textContent = task.description;
+    div.appendChild(description);
 
-        const description = document.createElement('p');
-        description.setAttribute('id', 'description');
-        description.textContent = task.description;
-        div.appendChild(description);
+    const priority = document.createElement("p");
+    priority.setAttribute("id", "priority");
+    priority.textContent = task.priority;
+    div.appendChild(priority);
 
-        const priority = document.createElement('p');
-        priority.setAttribute('id', 'priority');
-        priority.textContent = task.priority;
-        div.appendChild(priority);
+    const date = document.createElement("p");
+    date.setAttribute("id", "date");
+    date.textContent = task.dueDate;
+    div.appendChild(date);
 
-        const date = document.createElement('p');
-        date.setAttribute('id', 'date');
-        date.textContent = task.dueDate;
-        div.appendChild(date);
+    const note = document.createElement("p");
+    note.setAttribute("id", "note");
+    note.textContent = task.note;
+    div.appendChild(note);
 
-        const note = document.createElement('p');
-        note.setAttribute('id', 'note');
-        note.textContent = task.note;
-        div.appendChild(note);
+    const editTaskBtn = document.createElement("button");
+    editTaskBtn.setAttribute("id", "editTaskBtn");
+    editTaskBtn.textContent = "edit";
+    div.appendChild(editTaskBtn);
 
-        const editTaskBtn = document.createElement('button');
-        editTaskBtn.setAttribute('id', 'editTaskBtn');
-        editTaskBtn.textContent = 'edit';
-        div.appendChild(editTaskBtn);
+    editTaskBtn.addEventListener("click", () => {
+      dialog.showModal();
+      taskTitle.value = task.title;
+      taskDescription.value = task.description;
+      taskNote.value = task.note;
+      taskDate.value = task.dueDate;
 
-        editTaskBtn.addEventListener('click', () => {
-            dialog.showModal();
-            taskTitle.value = task.title;
-            taskDescription.value = task.description;
-            taskNote.value = task.note;
-            taskDate.value = task.dueDate;
-
-            if(task.priority == 'low priority') {
-                taskPriority[0].checked = 'true';
-            } else if (task.priority == 'important'){
-                taskPriority[1].checked = 'true';
-            } else if (task.priority == 'urgent'){
-                taskPriority[2].checked = 'true';
-            };
-            myTasks.splice(index, 1);
-            closeTaskPopUp.style.display = 'none';
-        })
-
-        const deleteTaskBtn = document.createElement('button');
-        deleteTaskBtn.setAttribute('id', 'deleteTaskBtn');
-        deleteTaskBtn.textContent = 'x';
-        div.appendChild(deleteTaskBtn);
-
-        deleteTaskBtn.addEventListener('click', () => {
-            myTasks.splice(index, 1)
-            div.remove(index);
-        });
+      if (task.priority == "low priority") {
+        taskPriority[0].checked = "true";
+      } else if (task.priority == "important") {
+        taskPriority[1].checked = "true";
+      } else if (task.priority == "urgent") {
+        taskPriority[2].checked = "true";
+      }
+      myTasks.splice(index, 1);
+      saveTask();
+      closeTaskPopUp.style.display = "none";
     });
-};
+
+    const deleteTaskBtn = document.createElement("button");
+    deleteTaskBtn.setAttribute("id", "deleteTaskBtn");
+    deleteTaskBtn.textContent = "x";
+    div.appendChild(deleteTaskBtn);
+
+    deleteTaskBtn.addEventListener("click", () => {
+      myTasks.splice(index, 1);
+      div.remove(index);
+      saveTask();
+    });
+  });
+}
