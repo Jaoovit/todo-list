@@ -23,6 +23,7 @@ import {
 } from "./project";
 import "./style.css";
 import { format } from "date-fns";
+import img from "./task.png";
 
 //create tasks
 
