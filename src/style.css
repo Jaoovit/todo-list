@@ -33,3 +33,9 @@ header {
     border-top: solid 2px whitesmoke;
     border-radius: 10px;
 }
+
+#projectsList > p {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr;
+}
+

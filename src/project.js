@@ -95,7 +95,7 @@ export function displayTodayTasks() {
 
     const editTaskBtn = document.createElement("button");
     editTaskBtn.setAttribute("id", "editTaskBtn");
-    editTaskBtn.textContent = "edit";
+    editTaskBtn.innerHTML = "edit";
     div.appendChild(editTaskBtn);
 
     editTaskBtn.addEventListener("click", () => {
