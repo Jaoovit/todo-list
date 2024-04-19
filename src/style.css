@@ -1,16 +1,35 @@
 html {
     margin: 0;
     height: 100%;
+    font-family: sans-serif;
+    color: rgba(0, 0, 0, 0.863);
 }
 
 header {
     text-align: center;
 }
 
+#container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
 
-#sideBar {
+#todoArea {
+    grid-column-start: 2;
+    grid-column-end: 5;
+}
+
+#tasksList {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    text-align: center;
+    gap: 5px;
+}
+
+#newTask {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 1fr 2fr 1fr 1fr;
+    align-items: baseline;
+    gap: 15px;
+    border-top: solid 2px whitesmoke;
+    border-radius: 10px;
 }

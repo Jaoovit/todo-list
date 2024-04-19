@@ -19,6 +19,7 @@ import {
   displayAllTasks,
   saveTask,
   displayTodayTasks,
+  displayWeekTasks,
 } from "./project";
 import "./style.css";
 import { format } from "date-fns";
@@ -129,3 +130,10 @@ const todayBtn = document.querySelector("#today");
 todayBtn.addEventListener("click", () => {
   displayTodayTasks();
 });
+/*
+const weekBtn = document.querySelector("#thisWeek");
+
+weekBtn.addEventListener("click", () => {
+  displayWeekTasks();
+});
+*/
